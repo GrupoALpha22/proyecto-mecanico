@@ -1,0 +1,1 @@
+Esta carpeta contiene los scripts necesarios para crear la base de datos, crear las tablas y procedimientos almacenados
