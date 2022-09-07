@@ -1,0 +1,39 @@
+﻿@model PersonModel
+
+@{ }
+
+
+
+<div class="card">
+    <div class="card-header">
+        Crear persona
+    </div>
+    <div class="card-body">
+
+        <form asp-action="Guardar" asp-controller="Mantenedor" method="post">
+            <div class="mb-3">
+                <label class="form-label">Identificacion</label>
+                <input asp-for="Identificacion" type="text" class="form-control" />
+                <span asp-validation-for="Identificacion" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nombres</label>
+                <input asp-for="Nombre" type="text" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Apellido</label>
+                <input asp-for="Apellido" type="text" class="form-control" />
+                <span asp-validation-for="Apellido" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">anacimiento</label>
+                <input asp-for="anacimiento" type="text" class="form-control" />
+                <span asp-validation-for="anacimiento" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a asp-action="Listar" asp-controller="Mantenedor" class="btn btn-warning">Volver a la lista</a>
+        </form>
+    </div>
+</div>
