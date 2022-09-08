@@ -1,39 +1,59 @@
-﻿@model PersonModel
+﻿@model IEnumerable<ALPHA.Models.PersonModel>
 
-@{ }
+@{
+    ViewData["Title"] = "Listar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
+<h1>Listar</h1>
 
-
-<div class="card">
-    <div class="card-header">
-        Crear persona
-    </div>
-    <div class="card-body">
-
-        <form asp-action="Guardar" asp-controller="Mantenedor" method="post">
-            <div class="mb-3">
-                <label class="form-label">Identificacion</label>
-                <input asp-for="Identificacion" type="text" class="form-control" />
-                <span asp-validation-for="Identificacion" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Nombres</label>
-                <input asp-for="Nombre" type="text" class="form-control" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Apellido</label>
-                <input asp-for="Apellido" type="text" class="form-control" />
-                <span asp-validation-for="Apellido" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">anacimiento</label>
-                <input asp-for="anacimiento" type="text" class="form-control" />
-                <span asp-validation-for="anacimiento" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <a asp-action="Listar" asp-controller="Mantenedor" class="btn btn-warning">Volver a la lista</a>
-        </form>
-    </div>
-</div>
+<p>
+    <a asp-action="Guardar">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Idpersona)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Identificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.anacimiento)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Idpersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Identificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.anacimiento)
+            </td>
+            <td>
+                    @Html.ActionLink("Editar", "Editar", new {  id=item.Idpersona  }) |
+                @Html.ActionLink("Eliminar", "Eliminar", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

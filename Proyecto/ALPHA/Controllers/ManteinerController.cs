@@ -1,6 +1,7 @@
 ﻿using ALPHA.Data;
 using ALPHA.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Requ;
 
 namespace ALPHA.Controllers
 {
@@ -37,6 +38,7 @@ namespace ALPHA.Controllers
 
         public IActionResult Editar(int Idpersona)
         {
+            string val1 = Resquest.QueryString["variable1"].ToString();
             //devuelve la vista
             var opersona = _PersonaDatos.Obtener(Idpersona);
             return View();

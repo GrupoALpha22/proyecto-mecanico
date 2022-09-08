@@ -80,8 +80,8 @@ namespace ALPHA.Data
                     cmd.Parameters.AddWithValue("Identificacion", opersona.Identificacion);
                     cmd.Parameters.AddWithValue("Nombre", opersona.Nombre);
                     cmd.Parameters.AddWithValue("Apellido", opersona.Apellido);
-                    cmd.Parameters.AddWithValue("anacimiebto", opersona.anacimiento);
-
+                    cmd.Parameters.AddWithValue("anacimiento", opersona.anacimiento);
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
                 }
                 rpta = true;
@@ -111,8 +111,8 @@ namespace ALPHA.Data
                     cmd.Parameters.AddWithValue("Identificacion", opersona.Identificacion);
                     cmd.Parameters.AddWithValue("Nombre", opersona.Nombre);
                     cmd.Parameters.AddWithValue("Apellido", opersona.Apellido);
-                    cmd.Parameters.AddWithValue("anacimiebto", opersona.anacimiento);
-
+                    cmd.Parameters.AddWithValue("anacimiento", opersona.anacimiento);
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
                 }
                 rpta = true;
