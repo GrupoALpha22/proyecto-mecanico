@@ -13,7 +13,7 @@ De esta manera se puede ejecutar y modificar el proyecto.
 ## Modificar
 - Para publicar los cambios hechos al proyecto se deben ejecutar los siguientes comandos:
 ```
-git add .
+git status
 ```
 - Aquí se deben poder apreciar los cambios en letra roja. 
 - Como siguiente paso se ejecuta lo siguiente: 
