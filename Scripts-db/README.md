@@ -43,8 +43,8 @@ Se debe ejecutar la siguiente query para crear la tabla propietario:
 ```
 
 ## CREAR PROCEDIMIENTOS ALMACENADOS (SP)
-# Listar
-Se debe ejecutar la siguiente query para crear el procedimiento almacenado que **muestre la información de la tabla personas**:
+### Listar
+Se debe ejecutar la siguiente query para crear el procedimiento almacenado que **muestre la información de la tabla PERSONAS**:
 
 ```bash
     CREATE procedure sp_listar
@@ -52,6 +52,17 @@ Se debe ejecutar la siguiente query para crear el procedimiento almacenado que *
     begin
         select * from persona
     end
+```
+
+Se debe ejecutar la siguiente query para crear el procedimiento almacenado que **muestre la información de la tabla PROPIETARIOS**:
+
+```bash
+		CREATE procedure sp_listarPropietario
+		as
+		begin
+			SELECT*from persona
+			INNER JOIN propietario on propietario.Idpersona=persona.Idpersona
+		end
 ```
 # Obtener
 Se debe ejecutar la siguiente query para crear el procedimiento almacenado que **muestre la información de una persona en particular**:
