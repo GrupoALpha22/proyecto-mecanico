@@ -54,7 +54,7 @@ namespace ALPHA.Data
                     while (dr.Read())
                     {
 
-                        oPersona.Idpersona = Convert.ToInt32(dr["Idperona"]);
+                        oPersona.Idpersona = Convert.ToInt32(dr["Idpersona"]);
                         oPersona.Identificacion = dr["Identificacion"].ToString();
                         oPersona.Nombre = dr["Nombre"].ToString();
                         oPersona.Apellido = dr["Apellido"].ToString();

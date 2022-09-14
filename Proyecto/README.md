@@ -20,7 +20,7 @@ Se deben seguir los siguientes pasos.
 ## EMPEZAR A PROGRAMAR
 - Lo primero que se debe hacer es ir a la carpeta de modelos, darle click derecho y crear nueva clase. A esta clase la llamamos PersonModel.cs y copiamos el siguiente código: 
 ```
-using System;
+
 using System.ComponentModel.DataAnnotations;
 namespace ALPHA.Models
 {
@@ -60,7 +60,7 @@ namespace ALPHA.Models
 
 ```
 - Damos click derecho sobre el proyecto y le damos click sobre "ADMINISTRAR PAQUETES NUGET". Buscamos **system.data.sqlClient** e instalamos el paquete. 
-- Después de instalar creamos una carpeta con el nombre **Data** y creamos una nueva clase llamada **Connection**. Dentro de esa clase copiamos:
+- Después de instalar creamos una carpeta con el nombre **Data** y creamos una nueva clase llamada **Connection.cs**. Dentro de esa clase copiamos:
 
 ```
 using System.Data.SqlClient;
@@ -84,10 +84,11 @@ namespace ALPHA.Data
             return cadenaSQL;
         }
     }
+
 }
 
 ```
-- Creamos una nueva clase dentro de la carpeta Data con el nombre **PersonData** y copiamos el siguiente código:
+- Creamos una nueva clase dentro de la carpeta Data con el nombre **PersonData.cs** y copiamos el siguiente código:
 
 ```
 using System.Data.SqlClient;
@@ -146,7 +147,7 @@ namespace ALPHA.Data
                     while (dr.Read())
                     {
 
-                        oPersona.Idpersona = Convert.ToInt32(dr["Idperona"]);
+                        oPersona.Idpersona = Convert.ToInt32(dr["Idpersona"]);
                         oPersona.Identificacion = dr["Identificacion"].ToString();
                         oPersona.Nombre = dr["Nombre"].ToString();
                         oPersona.Apellido = dr["Apellido"].ToString();
@@ -172,8 +173,8 @@ namespace ALPHA.Data
                     cmd.Parameters.AddWithValue("Identificacion", opersona.Identificacion);
                     cmd.Parameters.AddWithValue("Nombre", opersona.Nombre);
                     cmd.Parameters.AddWithValue("Apellido", opersona.Apellido);
-                    cmd.Parameters.AddWithValue("anacimiebto", opersona.anacimiento);
-
+                    cmd.Parameters.AddWithValue("anacimiento", opersona.anacimiento);
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
                 }
                 rpta = true;
@@ -203,8 +204,8 @@ namespace ALPHA.Data
                     cmd.Parameters.AddWithValue("Identificacion", opersona.Identificacion);
                     cmd.Parameters.AddWithValue("Nombre", opersona.Nombre);
                     cmd.Parameters.AddWithValue("Apellido", opersona.Apellido);
-                    cmd.Parameters.AddWithValue("anacimiebto", opersona.anacimiento);
-
+                    cmd.Parameters.AddWithValue("anacimiento", opersona.anacimiento);
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
                 }
                 rpta = true;
@@ -251,7 +252,6 @@ namespace ALPHA.Data
     }
 }
 
-
 ```
 - En la carpeta *Controllers* le damos click derecho y seleccionamos Nuevo scaffolding. seleccionamos Controlador de MVC en blanco, lo nombramos **ManteinerController.cs** y copiamos el siguiente código: 
 
@@ -295,9 +295,10 @@ namespace ALPHA.Controllers
 
         public IActionResult Editar(int Idpersona)
         {
+            //string val1 = Resquest.QueryString["variable1"].ToString();
             //devuelve la vista
             var opersona = _PersonaDatos.Obtener(Idpersona);
-            return View();
+            return View(opersona);
         }
 
         [HttpPost]
@@ -324,12 +325,10 @@ namespace ALPHA.Controllers
         [HttpPost]
         public IActionResult Eliminar(PersonModel oPersona)
         {
-            //validacion de campos
-            if (!ModelState.IsValid)
-                return View();
+
             //recibe un objeto y guarda en la base de datos
-            var resouesta = _PersonaDatos.Editar(oPersona);
-            if (resouesta)
+            var respuesta = _PersonaDatos.Eliminar(oPersona.Idpersona);
+            if (respuesta)
                 return RedirectToAction("Listar");
             else
                 return View();
@@ -338,11 +337,275 @@ namespace ALPHA.Controllers
     }
 }
 
+
 ```
 
 - Sobre el archivo que acabamos de crear *ManteinerController*, damos click derecho y le damos crear vista. En el nombre ponemos **Listar**, chuleamos Usar página de diseño y buscamos el archivo *layout* alojado en *Views/Shared/layout.cshtml* 
-Esto creará una carpeta llamada **Manteiner* dentro de Views y dentro se encontrará el archivo *Listar.cshtml*. Dentro de ese archivo copiamos: 
+- Esto creará una carpeta llamada **Manteiner** dentro de Views y dentro se encontrará el archivo **Listar.cshtml**.
+- Dentro de ese archivo vamos a copiar lo siguiente:
+```
+@model IEnumerable<ALPHA.Models.PersonModel>
+
+@{
+    ViewData["Title"] = "Listar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Listar</h1>
+
+<p>
+    <a asp-action="Guardar" class="btn btn-primary">Crear persona</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Idpersona)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Identificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.anacimiento)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Idpersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Identificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.anacimiento)
+            </td>
+            <td>
+                    <a asp-action="Editar" asp-route-Idpersona=@item.Idpersona class="btn btn-success">Editar</a>
+                    <a asp-action="Eliminar" class="btn btn-danger">Eliminar</a>
+          @*          <button type="submit" class="btn btn-warning">
+                        @Html.ActionLink("Editar" , "Editar", new {  Idpersona=item.Idpersona })
+                    </button>
+                    <button type="submit" class="btn btn-danger">
+                    @Html.ActionLink("Eliminar", "Eliminar", new { Idpersona=item.Idpersona })
+                    </button>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+```
+- Vamos a repetir los pasos anteriores con la vista Guardar, Editar y Eliminar copiando las sigueintes lineas de código respectivamente: 
+- Para **Guardar.cshtml**
+```
+@model ALPHA.Models.PersonModel
+
+@{
+    ViewData["Title"] = "Guardar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Crear</h1>
+
+<div class="card">
+    <div class="card-header">
+        Crear persona
+    </div>
+    <div class="card-body">
+
+        <form asp-action="Guardar">
+            <div class="form-group">
+                <label class="form-label">Identificacion</label>
+                <input asp-for="Identificacion" type="text" class="form-control" />
+                <span asp-validation-for="Identificacion" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input asp-for="Nombre" type="text" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+
+                <label class="form-label">Apellido</label>
+                <input asp-for="Apellido" type="text" class="form-control" />
+                <span asp-validation-for="Apellido" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">anacimiento</label>
+                <input asp-for="anacimiento" type="text" class="form-control" />
+                <span asp-validation-for="anacimiento" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a asp-action="Listar" asp-controller="Manteiner" class="btn btn-warning">Volver a la lista</a>
+        </form>
+    </div>
+</div>
+
 
 ```
 
+- Para **Editar.cshtml**
+
 ```
+@model ALPHA.Models.PersonModel
+
+@{
+    ViewData["Title"] = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Editar</h1>
+
+<div class="card">
+    <div class="card-header">
+        Editar Propietario
+    </div>
+    <div class="card-body">
+
+        <form asp-action="Editar" asp-controller="Manteiner" method="post">
+            <input asp-for="Idpersona" type="hidden" class="form-control" />
+            <div class="mb-3">
+                <label class="form-label">Identificacion</label>
+                <input asp-for="Identificacion" type="text" class="form-control" />
+                <span asp-validation-for="Identificacion" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <h1>@ViewData["Nombre"]</h1>
+                
+                <label class="form-label">Nombre</label>
+                <input asp-for="Nombre" type="text" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                
+                <label class="form-label">Apellido</label>
+                <input asp-for="Apellido" type="text" class="form-control" />
+                <span asp-validation-for="Apellido" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">anacimiento</label>
+                <input asp-for="anacimiento" type="text" class="form-control" />
+                <span asp-validation-for="anacimiento" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a asp-action="Listar" asp-controller="Manteiner" class="btn btn-warning">Volver a la lista</a>
+        </form>
+    </div>
+</div>
+
+```
+- Para **Eliminar.cshtml**
+
+```
+@model ALPHA.Models.PersonModel
+
+@{
+    ViewData["Title"] = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Eliminar</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+
+<div class="card">
+    <div class="card-header">
+        Eliminar Propietario
+    </div>
+    <div class="card-body">
+
+        <form asp-action="Eliminar" asp-controller="Manteiner" method="post">
+
+            <input asp-for="Idpersona" type="hidden" class="form-control">
+
+            <div class="alert alert-danger" role="alert">
+                ¿Desea eliminar el contacto : @Html.DisplayTextFor(m => m.Nombre) ?
+            </div>
+
+
+
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a asp-action="Listar" asp-controller="Manteiner" class="btn btn-warning">Voler a la lista</a>
+        </form>
+
+
+    </div>
+</div>
+```
+
+- Para poder visualizar esta vista debemos cambiar el archivo **_Layout.cshtml** que se encuentra en **Views/Shared** de la siguiente manera :
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ALPHA</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ALPHA.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ALPHA</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Manteiner" asp-action="Listar">Personas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - ALPHA - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+
+```
+

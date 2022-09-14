@@ -1,7 +1,6 @@
 ﻿using ALPHA.Data;
 using ALPHA.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Net.Requ;
 
 namespace ALPHA.Controllers
 {
@@ -38,10 +37,10 @@ namespace ALPHA.Controllers
 
         public IActionResult Editar(int Idpersona)
         {
-            string val1 = Resquest.QueryString["variable1"].ToString();
+            //string val1 = Resquest.QueryString["variable1"].ToString();
             //devuelve la vista
             var opersona = _PersonaDatos.Obtener(Idpersona);
-            return View();
+            return View(opersona);
         }
 
         [HttpPost]
@@ -68,12 +67,10 @@ namespace ALPHA.Controllers
         [HttpPost]
         public IActionResult Eliminar(PersonModel oPersona)
         {
-            //validacion de campos
-            if (!ModelState.IsValid)
-                return View();
+
             //recibe un objeto y guarda en la base de datos
-            var resouesta = _PersonaDatos.Editar(oPersona);
-            if (resouesta)
+            var respuesta = _PersonaDatos.Eliminar(oPersona.Idpersona);
+            if (respuesta)
                 return RedirectToAction("Listar");
             else
                 return View();

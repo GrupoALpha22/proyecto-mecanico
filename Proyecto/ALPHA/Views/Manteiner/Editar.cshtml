@@ -7,7 +7,7 @@
 
 <h1>Editar</h1>
 
-<h4>PersonModel</h4>
+@*<h4>PersonModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -49,3 +49,42 @@
     <a asp-action="Listar">Back to List</a>
 </div>
 
+*@
+<div class="card">
+    <div class="card-header">
+        Editar Propietario
+    </div>
+    <div class="card-body">
+
+        <form asp-action="Editar" asp-controller="Manteiner" method="post">
+            <input asp-for="Idpersona" type="hidden" class="form-control" />
+            <div class="mb-3">
+                <label class="form-label">Identificacion</label>
+                <input asp-for="Identificacion" type="text" class="form-control" />
+                <span asp-validation-for="Identificacion" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <h1>@ViewData["Nombre"]</h1>
+                
+                <label class="form-label">Nombre</label>
+                <input asp-for="Nombre" type="text" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                
+                <label class="form-label">Apellido</label>
+                <input asp-for="Apellido" type="text" class="form-control" />
+                <span asp-validation-for="Apellido" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">anacimiento</label>
+                <input asp-for="anacimiento" type="text" class="form-control" />
+                <span asp-validation-for="anacimiento" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a asp-action="Listar" asp-controller="Manteiner" class="btn btn-warning">Volver a la lista</a>
+        </form>
+    </div>
+</div>
