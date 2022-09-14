@@ -83,6 +83,27 @@ Se debe ejecutar la siguiente query para crear el procedimiento almacenado para 
     end
 ```
 
+Se debe ejecutar la siguiente query para crear el procedimiento almacenado para **insertar un nuevo registro en la tabla propietario**:
+
+```
+create procedure sp_GuardarPropietario(
+@Identificacion VARCHAR(50),
+@Nombre VARCHAR(50),
+@Apellido VARCHAR(50),
+@anacimiento VARCHAR(50),
+@Ciudad varchar(50),
+@Email varchar(50)
+)
+as
+begin
+insert into persona(Identificacion,Nombre,Apellido,anacimiento)values(@Identificacion,@Nombre,@Apellido,@anacimiento)
+DECLARE @id VARCHAR(10) =  (SELECT MAX(Idpersona) from persona)
+
+INSERT into propietario(Idpersona,Ciudad,Email) VALUES (@id,@Ciudad,@Email)
+end
+
+```
+
 Se debe ejecutar la siguiente query para crear el procedimiento almacenado para **editar un registro en la tabla personas**:
 
 ```bash
