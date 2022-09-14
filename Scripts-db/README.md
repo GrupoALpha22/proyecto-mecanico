@@ -29,6 +29,20 @@ Se debe ejecutar la siguiente query para crear la tabla personas:
 
 ```
 
+Se debe ejecutar la siguiente query para crear la tabla propietario:
+```bash
+  CREATE TABLE propietario(
+    Idpropietario int  PRIMARY KEY,
+	  Idusuario int unique not null,
+    Idpersona int unique not null,
+    Ciudad VARCHAR(50) not null,
+    Email VARCHAR(50) not null,
+	  Foreign key(Idpersona)
+    References persona(Idpersona)
+)
+
+```
+
 ## CREAR PROCEDIMIENTOS ALMACENADOS (SP)
 
 Se debe ejecutar la siguiente query para crear el procedimiento almacenado que **muestre la información de la tabla personas**:
