@@ -60,7 +60,7 @@ Se debe ejecutar la siguiente query para crear el procedimiento almacenado que *
     CREATE procedure sp_listarPropietario
     as
     begin
-	SELECT*from persona
+	SELECT * from persona
 	INNER JOIN propietario on propietario.Idpersona=persona.Idpersona
     end
 ```
