@@ -608,4 +608,33 @@ namespace ALPHA.Controllers
 
 
 ```
+- Finalmente cambiamos el archivo **Index.cshtml** que se encuentra en **Views/Home** de la siguiente manera: 
+```
+@{
+    ViewData["Title"] = "Home Page";
+}
 
+<div class="text-center">
+    <h1 class="display-4">Bienvenidos</h1>
+    <hr />
+    <div id="demo" class="carousel slide mw-80 pt-2" data-bs-ride="carousel">
+
+        <!-- Indicators/dots -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+        </div>
+
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://c.tenor.com/GVk4jB2u_i8AAAAC/coding.gif" alt="Los Angeles" class="d-block w-100">
+            </div>
+        </div>
+
+        <!-- Left and right controls/icons -->
+    </div>
+    <hr />
+    <p>Somos grupo ALPHA! Para ver nuestro repositorio haga <a href="https://docs.microsoft.com/aspnet/core">click aquí</a>.</p>
+</div>
+
+```
