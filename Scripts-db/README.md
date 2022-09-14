@@ -43,7 +43,7 @@ Se debe ejecutar la siguiente query para crear la tabla propietario:
 ```
 
 ## CREAR PROCEDIMIENTOS ALMACENADOS (SP)
-#Listar
+# Listar
 Se debe ejecutar la siguiente query para crear el procedimiento almacenado que **muestre la información de la tabla personas**:
 
 ```bash
@@ -53,7 +53,7 @@ Se debe ejecutar la siguiente query para crear el procedimiento almacenado que *
         select * from persona
     end
 ```
-#Obtener
+# Obtener
 Se debe ejecutar la siguiente query para crear el procedimiento almacenado que **muestre la información de una persona en particular**:
 
 ```bash
@@ -66,7 +66,7 @@ Se debe ejecutar la siguiente query para crear el procedimiento almacenado que *
     end
 
 ```
-#Insertar
+# Insertar
 Se debe ejecutar la siguiente query para crear el procedimiento almacenado para **insertar un nuevo registro en la tabla personas**:
 
 ```bash
@@ -103,7 +103,7 @@ INSERT into propietario(Idpersona,Ciudad,Email) VALUES (@id,@Ciudad,@Email)
 end
 
 ```
-#Editar
+# Editar
 Se debe ejecutar la siguiente query para crear el procedimiento almacenado para **editar un registro en la tabla personas**:
 
 ```bash
@@ -120,7 +120,7 @@ Se debe ejecutar la siguiente query para crear el procedimiento almacenado para 
     @Nombre,Apellido=@Apellido,anacimiento=@anacimiento where Idpersona=@Idpersona
     end
 ```
-#Eliminar
+# Eliminar
 Se debe ejecutar la siguiente query para crear el procedimiento almacenado para **eliminar un registro en la tabla personas**:
 
 ```bash
