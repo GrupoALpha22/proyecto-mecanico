@@ -29,9 +29,22 @@ Se debe ejecutar la siguiente query para crear la tabla personas:
 
 ```
 
-## CREAR PROCEDIMIENTOS ALMACENADOS (SP)
+Se debe ejecutar la siguiente query para crear la tabla propietario:
+```bash
+  CREATE TABLE propietario(
+     Idpropietario int identity PRIMARY KEY,
+     Idpersona int unique not null,
+     Ciudad VARCHAR(50) not null,
+     Email VARCHAR(50) not null,
+     Foreign key(Idpersona)
+     References persona(Idpersona)
+)
 
-Se debe ejecutar la siguiente query para crear el procedimiento almacenado que **muestre la información de la tabla personas**:
+```
+
+## CREAR PROCEDIMIENTOS ALMACENADOS (SP)
+### Listar
+Se debe ejecutar la siguiente query para crear el procedimiento almacenado que **muestre la información de la tabla PERSONAS**:
 
 ```bash
     CREATE procedure sp_listar
@@ -41,6 +54,17 @@ Se debe ejecutar la siguiente query para crear el procedimiento almacenado que *
     end
 ```
 
+Se debe ejecutar la siguiente query para crear el procedimiento almacenado que **muestre la información de la tabla PROPIETARIOS**:
+
+```bash
+    CREATE procedure sp_listarPropietario
+    as
+    begin
+	SELECT * from persona
+	INNER JOIN propietario on propietario.Idpersona=persona.Idpersona
+    end
+```
+# Obtener
 Se debe ejecutar la siguiente query para crear el procedimiento almacenado que **muestre la información de una persona en particular**:
 
 ```bash
@@ -53,7 +77,7 @@ Se debe ejecutar la siguiente query para crear el procedimiento almacenado que *
     end
 
 ```
-
+# Insertar
 Se debe ejecutar la siguiente query para crear el procedimiento almacenado para **insertar un nuevo registro en la tabla personas**:
 
 ```bash
@@ -70,6 +94,27 @@ Se debe ejecutar la siguiente query para crear el procedimiento almacenado para 
     end
 ```
 
+Se debe ejecutar la siguiente query para crear el procedimiento almacenado para **insertar un nuevo registro en la tabla propietario**:
+
+```
+create procedure sp_GuardarPropietario(
+@Identificacion VARCHAR(50),
+@Nombre VARCHAR(50),
+@Apellido VARCHAR(50),
+@anacimiento VARCHAR(50),
+@Ciudad varchar(50),
+@Email varchar(50)
+)
+as
+begin
+insert into persona(Identificacion,Nombre,Apellido,anacimiento)values(@Identificacion,@Nombre,@Apellido,@anacimiento)
+DECLARE @id VARCHAR(10) =  (SELECT MAX(Idpersona) from persona)
+
+INSERT into propietario(Idpersona,Ciudad,Email) VALUES (@id,@Ciudad,@Email)
+end
+
+```
+# Editar
 Se debe ejecutar la siguiente query para crear el procedimiento almacenado para **editar un registro en la tabla personas**:
 
 ```bash
@@ -86,7 +131,7 @@ Se debe ejecutar la siguiente query para crear el procedimiento almacenado para 
     @Nombre,Apellido=@Apellido,anacimiento=@anacimiento where Idpersona=@Idpersona
     end
 ```
-
+# Eliminar
 Se debe ejecutar la siguiente query para crear el procedimiento almacenado para **eliminar un registro en la tabla personas**:
 
 ```bash
