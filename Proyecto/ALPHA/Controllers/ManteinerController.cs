@@ -60,7 +60,7 @@ namespace ALPHA.Controllers
         {
             //devuelve la vista
             var opersona = _PersonaDatos.Obtener(Idpersona);
-            return View();
+            return View(opersona);
         }
 
         [HttpPost]

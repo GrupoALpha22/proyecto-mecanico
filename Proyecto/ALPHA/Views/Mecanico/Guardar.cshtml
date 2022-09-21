@@ -1,0 +1,114 @@
+﻿@model ALPHA.Models.MecanicoModel
+
+@{
+    ViewData["Title"] = "Guardar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Guardar</h1>
+
+<h4>MecanicoModel</h4>
+@*<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Guardar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+   @*         <div class="form-group">
+                <label asp-for="IdMecanico" class="control-label"></label>
+                <input asp-for="IdMecanico" class="form-control" />
+                <span asp-validation-for="IdMecanico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Idpersona" class="control-label"></label>
+                <input asp-for="Idpersona" class="form-control" />
+                <span asp-validation-for="Idpersona" class="text-danger"></span>
+            </div>*@
+     @*       <div class="form-group">
+                <label asp-for="Identificacion" class="control-label"></label>
+                <input asp-for="Identificacion" class="form-control" />
+                <span asp-validation-for="Identificacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Apellido" class="control-label"></label>
+                <input asp-for="Apellido" class="form-control" />
+                <span asp-validation-for="Apellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="anacimiento" class="control-label"></label>
+                <input asp-for="anacimiento" class="form-control" />
+                <span asp-validation-for="anacimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ciudad" class="control-label"></label>
+                <input asp-for="Ciudad" class="form-control" />
+                <span asp-validation-for="Ciudad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Listar">Back to List</a>
+</div>
+*@
+
+        <div class="card">
+            <div class="card-header">
+                Crear Mecanico
+            </div>
+            <div class="card-body">
+
+                <form asp-action="Guardar">
+                    <div class="form-group">
+                        <label class="form-label">Identificacion</label>
+                        <input asp-for="Identificacion" type="text" class="form-control" />
+                        <span asp-validation-for="Identificacion" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input asp-for="Nombre" type="text" class="form-control" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+
+                        <label class="form-label">Apellido</label>
+                        <input asp-for="Apellido" type="text" class="form-control" />
+                        <span asp-validation-for="Apellido" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">anacimiento</label>
+                        <input asp-for="anacimiento" type="text" class="form-control" />
+                        <span asp-validation-for="anacimiento" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Direccion</label>
+                        <input asp-for="Direccion" type="text" class="form-control" />
+                <span asp-validation-for="Direccion" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nivel Educativo</label>
+                        <input asp-for="NivelEducativo" type="text" class="form-control" />
+                <span asp-validation-for="NivelEducativo" class="text-danger"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a asp-action="Listar" asp-controller="Mecanico" class="btn btn-warning">Volver a la lista</a>
+                </form>
+            </div>
+        </div>
+

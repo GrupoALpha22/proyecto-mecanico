@@ -4,13 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ALPHA.Controllers
 {
-    public class MecanicoController : Controller
+    public class PropietarioController : Controller
     {
-        MecanicoData _MecanicoDatos = new MecanicoData();
+        PropietarioData _PropietarioDatos = new PropietarioData();
         public IActionResult Listar()
         {
             //listar contactos
-            var oLista = _MecanicoDatos.Listar();
+            var oLista = _PropietarioDatos.Listar();
             return View(oLista);
         }
         public IActionResult Guardar()
@@ -21,13 +21,13 @@ namespace ALPHA.Controllers
         }
 
         [HttpPost]
-        public IActionResult Guardar(MecanicoModel oMecanico)
+        public IActionResult Guardar(PropietarioModel oPropietario)
         {
             //validacion de campos
             if (!ModelState.IsValid)
                 return RedirectToAction("Listar");
             //recibe un objeto y guarda en la base de datos
-            var resouesta = _MecanicoDatos.Guardar(oMecanico);
+            var resouesta = _PropietarioDatos.Guardar(oPropietario);
             if (resouesta)
                 return RedirectToAction("Listar");
             else
@@ -37,18 +37,18 @@ namespace ALPHA.Controllers
         public IActionResult Editar(int Idpersona)
         {
             //devuelve la vista
-            var oMecanico = _MecanicoDatos.Obtener(Idpersona);
-            return View(oMecanico);
+            var oPropietario = _PropietarioDatos.Obtener(Idpersona);
+            return View(oPropietario);
         }
 
         [HttpPost]
-        public IActionResult Editar(MecanicoModel oMecanico)
+        public IActionResult Editar(PropietarioModel oPropietario)
         {
             //validacion de campos
             if (!ModelState.IsValid)
                 return View();
             //recibe un objeto y guarda en la base de datos
-            var resouesta = _MecanicoDatos.Editar(oMecanico);
+            var resouesta = _PropietarioDatos.Editar(oPropietario);
             if (resouesta)
                 return RedirectToAction("Listar");
             else
@@ -58,16 +58,16 @@ namespace ALPHA.Controllers
         public IActionResult Eliminar(int Idpersona)
         {
             //devuelve la vista
-            var oMecanico = _MecanicoDatos.Obtener(Idpersona);
-            return View(oMecanico);
+            var oPropietario = _PropietarioDatos.Obtener(Idpersona);
+            return View(oPropietario);
         }
 
         [HttpPost]
-        public IActionResult Eliminar(MecanicoModel oMecanico)
+        public IActionResult Eliminar(PropietarioModel oPropietario)
         {
 
             //recibe un objeto y guarda en la base de datos
-            var respuesta = _MecanicoDatos.Eliminar(oMecanico.Idpersona);
+            var respuesta = _PropietarioDatos.Eliminar(oPropietario.Idpersona);
             if (respuesta)
                 return RedirectToAction("Listar");
             else

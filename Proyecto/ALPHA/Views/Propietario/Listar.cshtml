@@ -1,4 +1,6 @@
-﻿@model IEnumerable<ALPHA.Models.PropietarioModel>
+﻿
+
+@model IEnumerable<ALPHA.Models.PropietarioModel>
 
 @{
     ViewData["Title"] = "Listar";
@@ -68,8 +70,8 @@
                 @Html.DisplayFor(modelItem => item.anacimiento)
             </td>
             <td>
-                    <a asp-action="Editar" asp-route-Idpropietario=@item.Idpropietario class="btn btn-success">Editar</a>
-                 <a asp-action="Eliminar" class="btn btn-danger">Eliminar</a>
+                    <a asp-action="Editar" asp-route-Idpersona=@item.Idpersona class="btn btn-success">Editar</a>
+                    <a asp-action="Eliminar" asp-route-Idpersona=@item.Idpersona class ="btn btn-danger">Eliminar</a>
 @*                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
@@ -78,3 +80,4 @@
 }
     </tbody>
 </table>
+

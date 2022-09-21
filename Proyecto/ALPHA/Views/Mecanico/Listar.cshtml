@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ALPHA.Models.MecanicoModel>
+
+@{
+    ViewData["Title"] = "Listar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Listar</h1>
+
+<p>
+    <a asp-action="Guardar" class="btn btn-primary">Crear persona</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Idmecanico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Idpersona)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Identificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NivelEducativo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.anacimiento)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Idmecanico)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Idpersona)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Identificacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NivelEducativo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.anacimiento)
+                </td>
+                <td>
+                    <a asp-action="Editar" asp-route-Idpersona=@item.Idpersona class="btn btn-success">Editar</a>
+                    <a asp-action="Eliminar" asp-route-Idpersona=@item.Idpersona class="btn btn-danger">Eliminar</a>
+                    @*                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

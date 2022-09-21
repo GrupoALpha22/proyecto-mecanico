@@ -36,7 +36,6 @@ C:\Users\aleja\Documents\Mision-Tics-2022\CICLO3\REPOSITORIES\proyecto-mecanico\
 C:\Users\aleja\Documents\Mision-Tics-2022\CICLO3\REPOSITORIES\proyecto-mecanico\Proyecto\ALPHA\bin\Debug\net6.0\MessagePack.Annotations.dll
 C:\Users\aleja\Documents\Mision-Tics-2022\CICLO3\REPOSITORIES\proyecto-mecanico\Proyecto\ALPHA\bin\Debug\net6.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\aleja\Documents\Mision-Tics-2022\CICLO3\REPOSITORIES\proyecto-mecanico\Proyecto\ALPHA\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\aleja\Documents\Mision-Tics-2022\CICLO3\REPOSITORIES\proyecto-mecanico\Proyecto\ALPHA\bin\Debug\net6.0\Microsoft.Build.Locator.dll
 C:\Users\aleja\Documents\Mision-Tics-2022\CICLO3\REPOSITORIES\proyecto-mecanico\Proyecto\ALPHA\bin\Debug\net6.0\Microsoft.CodeAnalysis.AnalyzerUtilities.dll
 C:\Users\aleja\Documents\Mision-Tics-2022\CICLO3\REPOSITORIES\proyecto-mecanico\Proyecto\ALPHA\bin\Debug\net6.0\Microsoft.CodeAnalysis.dll
 C:\Users\aleja\Documents\Mision-Tics-2022\CICLO3\REPOSITORIES\proyecto-mecanico\Proyecto\ALPHA\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.dll
@@ -243,3 +242,6 @@ C:\Users\aleja\Documents\Mision-Tics-2022\CICLO3\REPOSITORIES\proyecto-mecanico\
 C:\Users\aleja\Documents\Mision-Tics-2022\CICLO3\REPOSITORIES\proyecto-mecanico\Proyecto\ALPHA\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\aleja\Documents\Mision-Tics-2022\CICLO3\REPOSITORIES\proyecto-mecanico\Proyecto\ALPHA\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\aleja\Documents\Mision-Tics-2022\CICLO3\REPOSITORIES\proyecto-mecanico\Proyecto\ALPHA\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\aleja\Documents\Mision-Tics-2022\CICLO3\REPOSITORIES\proyecto-mecanico\Proyecto\ALPHA\bin\Debug\net6.0\Microsoft.Build.dll
+C:\Users\aleja\Documents\Mision-Tics-2022\CICLO3\REPOSITORIES\proyecto-mecanico\Proyecto\ALPHA\bin\Debug\net6.0\Microsoft.Build.Framework.dll
+C:\Users\aleja\Documents\Mision-Tics-2022\CICLO3\REPOSITORIES\proyecto-mecanico\Proyecto\ALPHA\bin\Debug\net6.0\Microsoft.NET.StringTools.dll

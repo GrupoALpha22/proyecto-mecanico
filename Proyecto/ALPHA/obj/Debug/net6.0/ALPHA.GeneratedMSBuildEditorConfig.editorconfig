@@ -39,6 +39,30 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudGVpbmVyXExpc3Rhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/aleja/Documents/Mision-Tics-2022/CICLO3/REPOSITORIES/proyecto-mecanico/Proyecto/ALPHA/Views/Mecanico/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVjYW5pY29cRWRpdGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aleja/Documents/Mision-Tics-2022/CICLO3/REPOSITORIES/proyecto-mecanico/Proyecto/ALPHA/Views/Mecanico/Eliminar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVjYW5pY29cRWxpbWluYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aleja/Documents/Mision-Tics-2022/CICLO3/REPOSITORIES/proyecto-mecanico/Proyecto/ALPHA/Views/Mecanico/Guardar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVjYW5pY29cR3VhcmRhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aleja/Documents/Mision-Tics-2022/CICLO3/REPOSITORIES/proyecto-mecanico/Proyecto/ALPHA/Views/Mecanico/Listar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVjYW5pY29cTGlzdGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aleja/Documents/Mision-Tics-2022/CICLO3/REPOSITORIES/proyecto-mecanico/Proyecto/ALPHA/Views/Propietario/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9cRWRpdGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/aleja/Documents/Mision-Tics-2022/CICLO3/REPOSITORIES/proyecto-mecanico/Proyecto/ALPHA/Views/Propietario/Eliminar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9cRWxpbWluYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/aleja/Documents/Mision-Tics-2022/CICLO3/REPOSITORIES/proyecto-mecanico/Proyecto/ALPHA/Views/Propietario/Guardar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9cR3VhcmRhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

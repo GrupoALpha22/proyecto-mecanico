@@ -6,33 +6,33 @@ using System;
 
 namespace ALPHA.Data
 {
-    public class PropietarioData
+    public class MecanicoData
     {
 
-        public List<PropietarioModel> Listar()
+        public List<MecanicoModel> Listar()
         {
-            var olista = new List<PropietarioModel>();
+            var olista = new List<MecanicoModel>();
             var cn = new Connection();
             using (var conexion = new SqlConnection(cn.getCadenaSQL()))
             {
                 conexion.Open();
-                SqlCommand cmd = new SqlCommand("sp_ListarPropietario", conexion);
+                SqlCommand cmd = new SqlCommand("sp_ListarMecanico", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 using (var dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
                     {
-                        olista.Add(new PropietarioModel()
+                        olista.Add(new MecanicoModel()
                         {
-                            Idpropietario = Convert.ToInt32(dr["Idpropietario"]),
+                            Idmecanico = Convert.ToInt32(dr["Idmecanico"]),
                             Idpersona = Convert.ToInt32(dr["Idpersona"]),
                             Identificacion = dr["Identificacion"].ToString(),
                             Nombre = dr["Nombre"].ToString(),
                             Apellido = dr["Apellido"].ToString(),
                             anacimiento = dr["anacimiento"].ToString(),
-                            Ciudad = dr["Ciudad"].ToString(),
-                            Email = dr["Email"].ToString(),
+                            Direccion = dr["Direccion"].ToString(),
+                            NivelEducativo = dr["NivelEducativo"].ToString(),
                         });
                     }
                 }
@@ -41,14 +41,14 @@ namespace ALPHA.Data
 
         }
 
-        public PropietarioModel Obtener(int Idpersona)
+        public MecanicoModel Obtener(int Idpersona)
         {
-            var oPropietario = new PropietarioModel();
+            var oMecanico = new MecanicoModel();
             var cn = new Connection();
             using (var conexion = new SqlConnection(cn.getCadenaSQL()))
             {
                 conexion.Open();
-                SqlCommand cmd = new SqlCommand("sp_ObtenerPropietario", conexion);
+                SqlCommand cmd = new SqlCommand("sp_ObtenerMecanico", conexion);
                 cmd.Parameters.AddWithValue("Idpersona", Idpersona);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -57,21 +57,21 @@ namespace ALPHA.Data
                     while (dr.Read())
                     {
 
-                        oPropietario.Idpersona = Convert.ToInt32(dr["Idpersona"]);
-                        oPropietario.Identificacion = dr["Identificacion"].ToString();
-                        oPropietario.Nombre = dr["Nombre"].ToString();
-                        oPropietario.Apellido = dr["Apellido"].ToString();
-                        oPropietario.anacimiento = dr["anacimiento"].ToString();
-                        oPropietario.Ciudad = dr["Ciudad"].ToString();
-                        oPropietario.Email = dr["Email"].ToString();
+                        oMecanico.Idpersona = Convert.ToInt32(dr["Idpersona"]);
+                        oMecanico.Identificacion = dr["Identificacion"].ToString();
+                        oMecanico.Nombre = dr["Nombre"].ToString();
+                        oMecanico.Apellido = dr["Apellido"].ToString();
+                        oMecanico.anacimiento = dr["anacimiento"].ToString();
+                        oMecanico.Direccion = dr["Direccion"].ToString();
+                        oMecanico.NivelEducativo = dr["NivelEducativo"].ToString();
 
                     }
                 }
             }
-            return oPropietario;
+            return oMecanico;
 
         }
-        public bool Guardar(PropietarioModel opropietario)
+        public bool Guardar(MecanicoModel oMecanico)
         {
             bool rpta;
             try
@@ -80,13 +80,13 @@ namespace ALPHA.Data
                 using (var conexion = new SqlConnection(cn.getCadenaSQL()))
                 {
                     conexion.Open();
-                    SqlCommand cmd = new SqlCommand("sp_GuardarPropietario", conexion);
-                    cmd.Parameters.AddWithValue("Identificacion", opropietario.Identificacion);
-                    cmd.Parameters.AddWithValue("Nombre", opropietario.Nombre);
-                    cmd.Parameters.AddWithValue("Apellido", opropietario.Apellido);
-                    cmd.Parameters.AddWithValue("anacimiento", opropietario.anacimiento);
-                    cmd.Parameters.AddWithValue("Ciudad", opropietario.Ciudad);
-                    cmd.Parameters.AddWithValue("Email", opropietario.Email);
+                    SqlCommand cmd = new SqlCommand("sp_GuardarMecanico", conexion);
+                    cmd.Parameters.AddWithValue("Identificacion", oMecanico.Identificacion);
+                    cmd.Parameters.AddWithValue("Nombre", oMecanico.Nombre);
+                    cmd.Parameters.AddWithValue("Apellido", oMecanico.Apellido);
+                    cmd.Parameters.AddWithValue("anacimiento", oMecanico.anacimiento);
+                    cmd.Parameters.AddWithValue("Direccion", oMecanico.Direccion);
+                    cmd.Parameters.AddWithValue("NivelEducativo", oMecanico.NivelEducativo);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
                 }
@@ -104,7 +104,7 @@ namespace ALPHA.Data
             return rpta;
         }
 
-        public bool Editar(PropietarioModel opropietario)
+        public bool Editar(MecanicoModel oMecanico)
         {
             bool rpta;
             try
@@ -113,14 +113,14 @@ namespace ALPHA.Data
                 using (var conexion = new SqlConnection(cn.getCadenaSQL()))
                 {
                     conexion.Open();
-                    SqlCommand cmd = new SqlCommand("sp_EditarPropietario", conexion);
-                    cmd.Parameters.AddWithValue("Idpersona", opropietario.Idpersona);
-                    cmd.Parameters.AddWithValue("Identificacion", opropietario.Identificacion);
-                    cmd.Parameters.AddWithValue("Nombre", opropietario.Nombre);
-                    cmd.Parameters.AddWithValue("Apellido", opropietario.Apellido);
-                    cmd.Parameters.AddWithValue("anacimiento", opropietario.anacimiento);
-                    cmd.Parameters.AddWithValue("Ciudad", opropietario.Ciudad);
-                    cmd.Parameters.AddWithValue("Email", opropietario.Email);
+                    SqlCommand cmd = new SqlCommand("sp_EditarMecanico", conexion);
+                    cmd.Parameters.AddWithValue("Idpersona", oMecanico.Idpersona);
+                    cmd.Parameters.AddWithValue("Identificacion", oMecanico.Identificacion);
+                    cmd.Parameters.AddWithValue("Nombre", oMecanico.Nombre);
+                    cmd.Parameters.AddWithValue("Apellido", oMecanico.Apellido);
+                    cmd.Parameters.AddWithValue("anacimiento", oMecanico.anacimiento);
+                    cmd.Parameters.AddWithValue("Direccion", oMecanico.Direccion);
+                    cmd.Parameters.AddWithValue("NivelEducativo", oMecanico.NivelEducativo);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
                 }
@@ -146,7 +146,7 @@ namespace ALPHA.Data
                 using (var conexion = new SqlConnection(cn.getCadenaSQL()))
                 {
                     conexion.Open();
-                    SqlCommand cmd = new SqlCommand("sp_EliminarPropietario", conexion);
+                    SqlCommand cmd = new SqlCommand("sp_EliminarMecanico", conexion);
                     cmd.Parameters.AddWithValue("Idpersona", Idpersona);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();

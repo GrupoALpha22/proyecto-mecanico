@@ -1,0 +1,93 @@
+﻿@model ALPHA.Models.MecanicoModel
+
+@{
+    ViewData["Title"] = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Eliminar</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+@*<div>
+    <h4>MecanicoModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdMecanico)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdMecanico)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Idpersona)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Idpersona)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Identificacion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Identificacion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Apellido)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Apellido)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.anacimiento)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.anacimiento)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ciudad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ciudad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+    
+    <form asp-action="Eliminar">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>*@
+
+<div class="card">
+    <div class="card-header">
+        Eliminar Mecanico
+    </div>
+    <div class="card-body">
+
+        <form asp-action="Eliminar" asp-controller="Mecanico" method="post">
+
+            <input asp-for="Idpersona" type="hidden" class="form-control">
+
+            <div class="alert alert-danger" role="alert">
+                ¿Desea eliminar el Mecanico : @Html.DisplayTextFor(m => m.Nombre) ?
+            </div>
+
+
+
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a asp-action="Listar" asp-controller="Mecanico" class="btn btn-warning">Voler a la lista</a>
+        </form>
+
+
+    </div>
+</div>
